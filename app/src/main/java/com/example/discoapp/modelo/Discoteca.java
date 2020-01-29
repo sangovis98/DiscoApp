@@ -1,4 +1,4 @@
-package com.example.discoapp.Modelo;
+package com.example.discoapp.modelo;
 
 
 
