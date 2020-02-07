@@ -7,17 +7,36 @@ public class Discoteca {
     private int id;
     private String nombre;
     private String imgRuta;
-    private float rate;
-    private String locacalización;//Link a Maps
+    private double rate;
+    private double lat;
+    private double lng;
+
 
     public Discoteca(){}
 
-    public Discoteca(int id, String nombre, String imgRuta, float rate, String locacalización) {
+    public Discoteca(int id, String nombre, String imgRuta, double rate, double lat, double lng) {
         this.id = id;
         this.nombre = nombre;
         this.imgRuta = imgRuta;
         this.rate = rate;
-        this.locacalización = locacalización;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public double getLat() {
+        return lat;
+    }
+
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
+
+    public double getLng() {
+        return lng;
+    }
+
+    public void setLng(double ng) {
+        this.lng = lng;
     }
 
     public int getId() {
@@ -44,19 +63,11 @@ public class Discoteca {
         this.imgRuta = imgRuta;
     }
 
-    public float getRate() {
+    public double getRate() {
         return rate;
     }
 
-    public void setRate(float rate) {
+    public void setRate(double rate) {
         this.rate = rate;
-    }
-
-    public String getLocacalización() {
-        return locacalización;
-    }
-
-    public void setLocacalización(String locacalización) {
-        this.locacalización = locacalización;
-    }
+    };
 }

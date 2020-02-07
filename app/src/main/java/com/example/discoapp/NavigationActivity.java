@@ -6,6 +6,7 @@ import com.example.discoapp.modelo.*;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,7 @@ public class NavigationActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public ArrayList<Discoteca> discotecas = new ArrayList<Discoteca>();
     public ArrayAdapter<String> discoAdapter;
+    public DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +69,29 @@ public class NavigationActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        Discoteca disco = new Discoteca(1, "Fabrik", "@drawable/logofabrik", 4.5, 40.2654556, -3.8404861);
+        mDatabase.child("discotecas").child(Integer.toString(disco.getId())).setValue(disco);
+        DatabaseReference uidRef = mDatabase.child("discotecas");
+        uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<String> list = new ArrayList<>();
+                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String username = ds.child("nombre").getValue(String.class);
+                    list.add(username);
+                    Log.d("TAG", username);
+                }
+                ListView listView = (ListView) findViewById(R.id.listadiscos);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
+                listView.setAdapter(arrayAdapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
     }
 
     @Override
@@ -86,39 +111,6 @@ public class NavigationActivity extends AppCompatActivity {
     @Override
     public void onStart(){
         super.onStart();
-        DatabaseReference discos = db.child("Discotecas");
-        discos.orderByChild("id").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String prevChildKey) {
-                Discoteca disco = dataSnapshot.getValue(Discoteca.class);
-                discotecas.add(disco);
-            }
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String prevChildKey) {
-                /*Discoteca disco = dataSnapshot.getValue(Discoteca.class);
-                discotecas.add(disco);*/
-            }
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-                /*Discoteca disco = dataSnapshot.getValue(Discoteca.class);
-                discotecas.add(disco);*/
-            }
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String prevChildKey) {
-                /*Discoteca disco = dataSnapshot.getValue(Discoteca.class);
-                discotecas.add(disco);*/
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        ListView lista = (ListView) findViewById(R.id.ListaDiscotecas);
-        ArrayList<String> listaDiscos = new ArrayList<String>();
-        for(Discoteca d : discotecas)
-            listaDiscos.add(d.getNombre());
-        discoAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listaDiscos);
-        lista.setAdapter(discoAdapter);
     }
 }
