@@ -1,8 +1,9 @@
 package com.example.discoapp.modelo;
 
 
+import java.io.Serializable;
 
-public class Discoteca {
+public class Discoteca implements Serializable {
 
     private int id;
     private String nombre;
@@ -35,7 +36,7 @@ public class Discoteca {
         return lng;
     }
 
-    public void setLng(double ng) {
+    public void setLng(double lng) {
         this.lng = lng;
     }
 

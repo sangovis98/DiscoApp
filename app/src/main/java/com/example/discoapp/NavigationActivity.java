@@ -1,5 +1,6 @@
 package com.example.discoapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.discoapp.modelo.*;
@@ -29,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -41,7 +43,7 @@ public class NavigationActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public ArrayList<Discoteca> discotecas = new ArrayList<Discoteca>();
     public ArrayAdapter<String> discoAdapter;
-    public DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+    public DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,21 +72,28 @@ public class NavigationActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        Discoteca disco = new Discoteca(1, "Fabrik", "@drawable/logofabrik", 4.5, 40.2654556, -3.8404861);
-        mDatabase.child("discotecas").child(Integer.toString(disco.getId())).setValue(disco);
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference uidRef = mDatabase.child("discotecas");
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<String> list = new ArrayList<>();
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    String username = ds.child("nombre").getValue(String.class);
-                    list.add(username);
-                    Log.d("TAG", username);
+                    discotecas.add(ds.getValue(Discoteca.class));
+                    list.add(ds.child("nombre").getValue(String.class));
                 }
-                ListView listView = (ListView) findViewById(R.id.listadiscos);
+                ListView listView = findViewById(R.id.ListaDiscotecas);
                 ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
                 listView.setAdapter(arrayAdapter);
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(view.getContext(), DiscoActivity.class);
+                        Discoteca disco = discotecas.get(position);
+                        intent.putExtra("disco", disco);
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override
