@@ -3,19 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <Button
-        android:id="@+id/btnFabrik"
-        android:layout_width="181dp"
-        android:layout_height="78dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="209dp"
-        android:background="@drawable/logofabrik"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHome" />
+    android:layout_height="match_parent"
+    android:id="@+id/frameHome">
 
     <TextView
         android:id="@+id/textHome"
@@ -35,7 +24,7 @@
         android:id="@+id/ListaDiscotecas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="172dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
