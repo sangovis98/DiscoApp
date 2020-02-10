@@ -1,5 +1,6 @@
 package com.example.discoapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -11,6 +12,8 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -33,6 +36,7 @@ import android.view.Menu;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +47,8 @@ public class NavigationActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     public ArrayList<Discoteca> discotecas = new ArrayList<Discoteca>();
     public ArrayAdapter<String> discoAdapter;
-    public DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
+    private Usuario u;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,20 +76,20 @@ public class NavigationActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        u = (Usuario) getIntent().getSerializableExtra("user");
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference uidRef = mDatabase.child("discotecas");
 
         /** Codigo para insertar una discoteca, cambiad datos del constructor e incrementa el id por 1
-        Discoteca d = new Discoteca(3, "MoonDance", "imgRuta",rate, latitud, longitud);
-        mDatabase.child("discotecas").child(disco.getId()).setValue(disco);
-        */
-
+         Discoteca d = new Discoteca(3, "MoonDance", "imgRuta",rate, latitud, longitud);
+         mDatabase.child("discotecas").child(disco.getId()).setValue(disco);
+         */
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 List<String> list = new ArrayList<>();
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     discotecas.add(ds.getValue(Discoteca.class));
                     list.add(ds.child("nombre").getValue(String.class));
                 }
@@ -124,8 +129,10 @@ public class NavigationActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onStart(){
+    public void onStart() {
         super.onStart();
-
     }
+
+
+
 }
