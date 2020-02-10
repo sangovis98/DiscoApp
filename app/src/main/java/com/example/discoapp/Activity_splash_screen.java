@@ -22,4 +22,5 @@ public class Activity_splash_screen extends AppCompatActivity {
             }
         },2000);
     }
+
 }
