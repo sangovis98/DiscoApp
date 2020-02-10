@@ -74,6 +74,12 @@ public class NavigationActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference uidRef = mDatabase.child("discotecas");
+
+        /** Codigo para insertar una discoteca, cambiad datos del constructor e incrementa el id por 1
+        Discoteca d = new Discoteca(3, "MoonDance", "imgRuta",rate, latitud, longitud);
+        mDatabase.child("discotecas").child(disco.getId()).setValue(disco);
+        */
+
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

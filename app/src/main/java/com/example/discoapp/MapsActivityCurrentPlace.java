@@ -72,11 +72,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     // location retrieved by the Fused Location Provider.
     private Location mLastKnownLocation;
 
-    // Keys for storing activity state.
+    // Keys for storing activity state. Claves para almacenar el estado de la actividad.
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    // Used for selecting the current place.
+    // Used for selecting the current place. Esto es para seleccionar el lugar actual.
     private static final int M_MAX_ENTRIES = 5;
     private String[] mLikelyPlaceNames;
     private String[] mLikelyPlaceAddresses;
