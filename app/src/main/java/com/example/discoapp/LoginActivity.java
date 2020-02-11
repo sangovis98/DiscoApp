@@ -72,6 +72,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     //No volver hacia el Splahs
+
     }
 
 
