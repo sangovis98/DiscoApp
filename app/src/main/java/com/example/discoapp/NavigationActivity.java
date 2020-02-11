@@ -50,6 +50,9 @@ public class NavigationActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private Usuario u;
 
+    private ListView lista;
+    private Adaptador adaptador;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,12 +108,26 @@ public class NavigationActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 });
+
+                lista = findViewById(R.id.ListaDiscotecas);
+                adaptador = new Adaptador(getApplicationContext(), discotecas);
+                lista.setAdapter(adaptador);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
+            /** Para introducir manualmente discotecas
+            private ArrayList<Discoteca> getArrayItems(){
+                ArrayList<Discoteca> list = new ArrayList<>();
+                list.add(new Discoteca(R.drawable.moondance, "Moondance", "Electrónica"));
+                list.add(new Discoteca(R.drawable.independance, "Independace","Rock/House"));
+                list.add(new Discoteca(R.drawable.fabrik, "Fabrik","Color Electro/House"));
+
+                return list;
+            }
+             */
         });
     }
 
