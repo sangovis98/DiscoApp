@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.discoapp.modelo.Usuario;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +32,6 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     public ArrayList<Discoteca> discotecas = new ArrayList<Discoteca>();
     private DatabaseReference mDatabase;
-    private Usuario u;
 
     private ListView lista;
     private Adaptador adaptador;
