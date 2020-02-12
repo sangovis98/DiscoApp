@@ -26,22 +26,19 @@ public class LoginActivity extends AppCompatActivity {
 
     private ArrayList<Usuario> usuarios;
     private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usuarios = new ArrayList<Usuario>();
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
         DatabaseReference uidRef = mDatabase.child("usuarios");
-
-        /*Usuario u = new Usuario(2,"correo","user", "12345");
-        mDatabase.child("usuarios").child(u.getId()+"").setValue(u);*/
 
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                usuarios = new ArrayList<Usuario>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     usuarios.add(ds.getValue(Usuario.class));
                 }
@@ -66,6 +63,16 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                 }
+            }
+        });
+
+        Button breg = findViewById(R.id.btnReg);
+        breg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), NewAccountActivity.class);
+                intent.putExtra("id", usuarios.size()+1);
+                startActivity(intent);
             }
         });
     }
