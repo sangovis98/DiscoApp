@@ -74,13 +74,13 @@ public class NavigationActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         u = (Usuario) getIntent().getSerializableExtra("user");
-        //((TextView)findViewById(R.id.nombreUsuario)).setText(u.getNombre());
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation, menu);
+        ((TextView)findViewById(R.id.nombreUsuario)).setText(u.getNombre());
         return true;
     }
 
