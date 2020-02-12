@@ -74,7 +74,7 @@ public class NavigationActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
         u = (Usuario) getIntent().getSerializableExtra("user");
-
+        //((TextView)findViewById(R.id.nombreUsuario)).setText(u.getNombre());
     }
 
     @Override
@@ -96,6 +96,8 @@ public class NavigationActivity extends AppCompatActivity {
         super.onStart();
     }
 
-
+    public Usuario getUsuario(){
+        return u;
+    }
 
 }

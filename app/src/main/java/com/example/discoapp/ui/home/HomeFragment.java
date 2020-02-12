@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    public ArrayList<Discoteca> discotecas = new ArrayList<Discoteca>();
+    public ArrayList<Discoteca> discotecas;
     private DatabaseReference mDatabase;
 
     private ListView lista;
@@ -66,6 +66,7 @@ public class HomeFragment extends Fragment {
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                discotecas  = new ArrayList<Discoteca>();
                 List<String> list = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     discotecas.add(ds.getValue(Discoteca.class));
