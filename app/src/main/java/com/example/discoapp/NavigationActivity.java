@@ -45,13 +45,7 @@ public class NavigationActivity extends AppCompatActivity {
 
     public DatabaseReference db = FirebaseDatabase.getInstance().getReference();
     private AppBarConfiguration mAppBarConfiguration;
-    public ArrayList<Discoteca> discotecas = new ArrayList<Discoteca>();
-    public ArrayAdapter<String> discoAdapter;
-    private DatabaseReference mDatabase;
     private Usuario u;
-
-    private ListView lista;
-    private Adaptador adaptador;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,54 +75,6 @@ public class NavigationActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
         u = (Usuario) getIntent().getSerializableExtra("user");
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference uidRef = mDatabase.child("discotecas");
-
-        /** Codigo para insertar una discoteca, cambiad datos del constructor e incrementa el id por 1
-         Discoteca d = new Discoteca(3, "MoonDance", "imgRuta",rate, latitud, longitud);
-         mDatabase.child("discotecas").child(disco.getId()).setValue(disco);
-         */
-        uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                List<String> list = new ArrayList<>();
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    discotecas.add(ds.getValue(Discoteca.class));
-                    list.add(ds.child("nombre").getValue(String.class));
-                }
-                ListView listView = findViewById(R.id.ListaDiscotecas);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, list);
-                listView.setAdapter(arrayAdapter);
-                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        Intent intent = new Intent(view.getContext(), DiscoActivity.class);
-                        Discoteca disco = discotecas.get(position);
-                        intent.putExtra("disco", disco);
-                        startActivity(intent);
-                    }
-                });
-
-                lista = findViewById(R.id.ListaDiscotecas);
-                adaptador = new Adaptador(getApplicationContext(), discotecas);
-                lista.setAdapter(adaptador);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-            /** Para introducir manualmente discotecas
-            private ArrayList<Discoteca> getArrayItems(){
-                ArrayList<Discoteca> list = new ArrayList<>();
-                list.add(new Discoteca(R.drawable.moondance, "Moondance", "Electrónica"));
-                list.add(new Discoteca(R.drawable.independance, "Independace","Rock/House"));
-                list.add(new Discoteca(R.drawable.fabrik, "Fabrik","Color Electro/House"));
-
-                return list;
-            }
-             */
-        });
     }
 
     @Override
