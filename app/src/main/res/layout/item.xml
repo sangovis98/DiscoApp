@@ -21,7 +21,8 @@
             android:id="@+id/tituloItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:fontFamily="@font/audiowide"
+            android:text="TEXT VIEW"
             android:textSize="35sp" />
 
         <TextView

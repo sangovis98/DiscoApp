@@ -42,6 +42,7 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+        //Texto titulo de lista de discotecas
         final TextView textView = root.findViewById(R.id.textHome);
         homeViewModel.getText().observe(this, new Observer<String>() {
             @Override
@@ -66,14 +67,14 @@ public class HomeFragment extends Fragment {
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                discotecas  = new ArrayList<Discoteca>();
+                discotecas  = new ArrayList<>();
                 List<String> list = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     discotecas.add(ds.getValue(Discoteca.class));
                     list.add(ds.child("nombre").getValue(String.class));
                 }
                 ListView listView = getActivity().findViewById(R.id.ListaDiscotecas);
-                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, list);
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, list);
                 listView.setAdapter(arrayAdapter);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -94,7 +95,7 @@ public class HomeFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
             }
-            /** Para introducir manualmente discotecas
+            /** Para introducir manualmente discotecas sin tocar base de datos
              private ArrayList<Discoteca> getArrayItems(){
              ArrayList<Discoteca> list = new ArrayList<>();
              list.add(new Discoteca(R.drawable.moondance, "Moondance", "Electrónica"));

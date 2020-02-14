@@ -21,7 +21,7 @@ public class Discoteca implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Discoteca(int id, String imgRuta, String nombre, String descripcion, double rate, double lat, double lng) {
+    public Discoteca(int id, String nombre,String descripcion,String imgRuta, double rate, double lat, double lng) {
         this.id = id;
         this.imgRuta = imgRuta;
         this.nombre = nombre;
@@ -37,14 +37,6 @@ public class Discoteca implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getImgFoto() {
-        return imgRuta;
-    }
-
-    public void setImgFoto(String imgFoto) {
-        this.imgRuta = imgFoto;
     }
 
     public String getNombre() {
