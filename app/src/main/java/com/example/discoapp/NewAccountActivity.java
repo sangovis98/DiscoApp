@@ -43,7 +43,11 @@ public class NewAccountActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+    public void volverAtras(View view) {
+        startActivity(new Intent(getApplicationContext(),LoginActivity.class));
     }
 
-
 }
+

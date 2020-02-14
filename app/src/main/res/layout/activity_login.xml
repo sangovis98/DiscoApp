@@ -20,8 +20,8 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="234dp"
-            android:layout_height="237dp"
+            android:layout_width="198dp"
+            android:layout_height="170dp"
             android:layout_marginBottom="50dp"
             android:src="@drawable/logow" />
 
@@ -69,7 +69,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginBottom="30dp"
             android:text="¿Olvidaste tu contraseña?"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:enabled="false"/>
 
         <Button
             android:id="@+id/btnLogin"
@@ -101,7 +102,8 @@
                 android:gravity="end"
                 android:text="¿Aún no tienes cuenta?"
                 android:textColor="#fff"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:enabled="false"/>
 
             <Button
                 android:id="@+id/btnReg"
