@@ -24,17 +24,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/ListaDiscotecas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:dividerHeight="10dp"
-        android:footerDividersEnabled="true"
-        android:headerDividersEnabled="false"
+    <ScrollView
+        android:layout_width="410dp"
+        android:layout_height="736dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteY="-3dp">
 
-    </ListView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ListView
+                android:id="@+id/ListaDiscotecas"
+                android:layout_width="wrap_content"
+                android:layout_height="454dp"
+                android:layout_marginTop="100dp"
+                android:dividerHeight="10dp"
+                android:footerDividersEnabled="true"
+                android:headerDividersEnabled="false">
+
+            </ListView>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
