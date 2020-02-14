@@ -38,7 +38,7 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Proyecto Realizado por:"
+                android:text="               Proyecto Realizado por:"
                 android:textColor="#DDFFFFFF" />
         </TableRow>
 
@@ -49,13 +49,47 @@
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="124dp"
-                android:layout_height="92dp"
-                android:text=" Rubén Fuentes Santiago Gonzalez Juan Moronta Paula Sowinski"
+                android:layout_height="wrap_content"
+                android:text="                        Rubén Fuentes"
                 android:textColor="#B7FFFFFF" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="124dp"
+                android:layout_height="wrap_content"
+                android:text="                     Santiago González"
+                android:textColor="#B7FFFFFF" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:text="                         Juan Moronta"
+                android:textColor="#B7FFFFFF" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:text="                         Paula Sowinski"
+                android:textColor="#B7FFFFFF" />
+
+        </TableRow>
     </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
