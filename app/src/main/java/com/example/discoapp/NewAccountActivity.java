@@ -44,10 +44,6 @@ public class NewAccountActivity extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onBackPressed() {
-        //No volver hacia el Splahs
 
-    }
 
 }

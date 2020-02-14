@@ -26,64 +26,68 @@
             android:src="@drawable/logow" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/nombreUsuario"
-            android:hint="Nombre de usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:layout_marginBottom="15dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColorHint="#ccc"
             android:background="@drawable/input"
+            android:hint="Nombre de usuario"
             android:paddingLeft="20dp"
-            android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"/>
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#ccc" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/correoReg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/input"
             android:hint="Correo electrónico"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColorHint="#ccc"
-            android:background="@drawable/input"
             android:paddingLeft="20dp"
-            android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"/>
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#ccc" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:id="@+id/password"
-            android:hint="Contraseña"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:textColorHint="#ccc"
-            android:background="@drawable/input"
-            android:paddingLeft="20dp"
-            android:paddingRight="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"/>
-
-        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/passwordConfirm"
-            android:hint="Confirmar contraseña"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:textColorHint="#ccc"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/input"
+            android:hint="Contraseña"
             android:paddingLeft="20dp"
-            android:paddingRight="10dp"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp"/>
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#ccc" />
+
+        <EditText
+            android:id="@+id/passwordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/input"
+            android:hint="Confirmar contraseña"
+            android:paddingLeft="20dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFF"
+            android:textColorHint="#ccc" />
 
         <Button
             android:id="@+id/crearCuenta"
