@@ -61,9 +61,9 @@ public class HomeFragment extends Fragment {
         DatabaseReference uidRef = mDatabase.child("discotecas");
 
         //Codigo para insertar una discoteca, cambiad datos del constructor e incrementa el id por 1
-         Discoteca d = new Discoteca(6, "Joy Eslava", "Regueton/Techno", "@drawable/joy",3.5, 40.4171637, -3.7065661);
+         /*Discoteca d = new Discoteca(6, "Joy Eslava", "Regueton/Techno", "@drawable/joy",3.5, 40.4171637, -3.7065661);
          mDatabase.child("discotecas").child(d.getId()+"").setValue(d);
-
+        */
         uidRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
